@@ -1,0 +1,11 @@
+# ignore all the files which are not essential for
+# loading the project in kicad
+*.sch-bak
+*.kicad_pcb-bak
+*-rescue.*
+
+fp-info-cache
+debug.log
+
+# ignore the small utility bash script
+*.sh
