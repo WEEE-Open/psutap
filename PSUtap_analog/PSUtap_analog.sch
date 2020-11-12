@@ -462,11 +462,11 @@ A9
 Text Label 7000 2600 2    50   ~ 0
 A10
 Text Label 2000 1650 0    50   ~ 0
-A7
+A3
 Text Label 5000 1650 0    50   ~ 0
-A5
+A6
 Text Label 6050 1650 0    50   ~ 0
-A4
+A9
 $Comp
 L Device:R_Small R5
 U 1 1 5EE84EE1
@@ -1045,13 +1045,13 @@ F 3 "~" H 1300 3550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Label 4250 3800 0    50   ~ 0
-A8
+A4
 Text Label 4250 5050 0    50   ~ 0
-A10
+A2
 Text Label 6700 5050 0    50   ~ 0
-A6
+A10
 Text Label 9150 3800 0    50   ~ 0
-A3
+A5
 Wire Wire Line
 	7000 1700 7150 1700
 Wire Wire Line
@@ -1772,11 +1772,11 @@ Connection ~ 9050 5050
 Wire Wire Line
 	9050 5050 8700 5050
 Text Label 6700 3800 0    50   ~ 0
-A1
+A8
 Text Label 3000 1650 0    50   ~ 0
-A9
+A1
 Text Label 4000 1650 0    50   ~ 0
-A2
+A7
 Wire Wire Line
 	9500 1250 9050 1250
 Wire Wire Line
