@@ -37,7 +37,7 @@ F 4 "CTX33-3-R" H 3950 1450 50  0001 C CNN "Notes"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Battery_Management:LT1512 U1
+L PSUtap_digital-rescue:LT1512-Battery_Management U1
 U 1 1 5F3DB73C
 P 2850 2200
 F 0 "U1" H 2900 2665 50  0000 C CNN
@@ -558,7 +558,7 @@ F 3 "" H 6950 2750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Battery_Management:Si6926ADQ U3
+L PSUtap_digital-rescue:Si6926ADQ-Battery_Management U3
 U 1 1 5F5A4436
 P 8200 2200
 F 0 "U3" H 8200 2615 50  0000 C CNN
