@@ -118,23 +118,25 @@ void setup(){
         case SD_CARD_TYPE_SDHC: disp.print("SDHC"); break;
         default: disp.print("Unknown"); break;
         }
-        //* find partition
+        //* find FAT volume
         if(!volume.init(card)){
-            disp.println("\nCould not find FAT16/FAT32 partition.\nMake sure you've formatted the card");
+            disp.println("\nCould not find FAT16/FAT32 volume.\nMake sure you've formatted the card");
         }
-        //* first FAT volume
-        volumesize=volume.blocksPerCluster(); // collection of blocks
-        volumesize*=volume.clusterCount();
-        volumesize/=2; // block = 512B <==> 2 blocks = 1KB
-        disp.print("\nVolume size:    ");
-        disp.print(volumesize);
-        disp.print("KB    (");
-        disp.print((float)volumesize/1024.0);
-        disp.print("GB)");
-        disp.print("\nFiles found on the card (name, date and size in bytes):");
-        root.openRoot(volume);
-        root.ls(LS_R | LS_DATE | LS_SIZE);
-        root.close();
+        else{
+            //* first FAT volume info
+            volumesize=volume.blocksPerCluster(); // collection of blocks
+            volumesize*=volume.clusterCount();
+            volumesize/=2; // block = 512B <==> 2 blocks = 1KB
+            disp.print("\nVolume size:    ");
+            disp.print(volumesize);
+            disp.print("KB    (");
+            disp.print((float)volumesize/1024.0);
+            disp.print("GB)");
+            disp.print("\nFiles found on the card (name, date and size in bytes):");
+            root.openRoot(volume);
+            root.ls(LS_R | LS_DATE | LS_SIZE);
+            root.close();
+        }
     }
 
     disp.print("\n");
