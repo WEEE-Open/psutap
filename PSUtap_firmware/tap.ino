@@ -36,11 +36,12 @@ bool stateSSSD=1;
 //* display declaration
 Adafruit_ILI9341 disp=Adafruit_ILI9341(pinSSDisp, pinDispDC, pinMOSI, pinSCLK); //_RST and _MISO pins not specified (fallback = -1)
 
-//* mSD card declaration
+//* uSD card declaration
 Sd2Card card;
 SdVolume volume;
 SdFile root;
 #define volumesize;
+bool uSDpresent=1;
 
 //* display diagnostics
 //* see https://www.newhavendisplay.com/app_notes/ILI9341.pdf
@@ -100,34 +101,41 @@ void setup(){
     disp.setTextColor(ILI9341_WHITE);  disp.setTextSize(1);
     disp.println("Hi, this is PSUtap\n");
 
-    //* mSD card info
-    //* type
-    disp.print("\nInitializing mSD card\nCard type:    ");
-    switch (card.type()){
-    case SD_CARD_TYPE_SD1: disp.print("SD1"); break;
-    case SD_CARD_TYPE_SD2: disp.print("SD2"); break;
-    case SD_CARD_TYPE_SDHC: disp.print("SDHC"); break;
-    default: disp.print("Unknown"); break;
+    //* uSD card
+    disp.print("\nInitializing uSD card...");
+    if(!SD.begin(pinSSuSD)){
+        Serial.println("\nCard initialization failed, or card not present");
+        uSDpresent=0;
     }
-    //* find partition
-    if (!volume.init(card)) {
-        disp.println("\nCould not find FAT16/FAT32 partition.\nMake sure you've formatted the card");
-    while (1);
-    }
-    //* first FAT volume
-    volumesize=volume.blocksPerCluster(); // collection of blocks
-    volumesize*=volume.clusterCount();
-    volumesize/=2; // block = 512B <==> 2 blocks = 1KB
-    disp.print("\nVolume size:    ");
-    disp.print(volumesize);
-    disp.print("KB    (");
-    disp.print((float)volumesize/1024.0);
-    disp.print("GB)");
-    disp.print("\nFiles found on the card (name, date and size in bytes):");
-    root.openRoot(volume);
-    root.ls(LS_R | LS_DATE | LS_SIZE);
-    root.close();
+    else{
+        Serial.println("\nCard initialized");
 
+        //* type
+        disp.print("\nCard type:    ");
+        switch (card.type()){
+        case SD_CARD_TYPE_SD1: disp.print("SD1"); break;
+        case SD_CARD_TYPE_SD2: disp.print("SD2"); break;
+        case SD_CARD_TYPE_SDHC: disp.print("SDHC"); break;
+        default: disp.print("Unknown"); break;
+        }
+        //* find partition
+        if(!volume.init(card)){
+            disp.println("\nCould not find FAT16/FAT32 partition.\nMake sure you've formatted the card");
+        }
+        //* first FAT volume
+        volumesize=volume.blocksPerCluster(); // collection of blocks
+        volumesize*=volume.clusterCount();
+        volumesize/=2; // block = 512B <==> 2 blocks = 1KB
+        disp.print("\nVolume size:    ");
+        disp.print(volumesize);
+        disp.print("KB    (");
+        disp.print((float)volumesize/1024.0);
+        disp.print("GB)");
+        disp.print("\nFiles found on the card (name, date and size in bytes):");
+        root.openRoot(volume);
+        root.ls(LS_R | LS_DATE | LS_SIZE);
+        root.close();
+    }
 
     disp.print("\n");
 
