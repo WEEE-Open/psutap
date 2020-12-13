@@ -1784,4 +1784,77 @@ Wire Wire Line
 Wire Wire Line
 	8800 1150 9050 1150
 Connection ~ 8800 1150
+$Comp
+L Device:Crystal_Small Y1
+U 1 1 5FAE7149
+P 8650 2700
+F 0 "Y1" V 8604 2788 50  0000 L CNN
+F 1 "32.768kHz" V 8695 2788 50  0000 L CNN
+F 2 "Crystal:Crystal_SMD_EuroQuartz_EQ161-2Pin_3.2x1.5mm_HandSoldering" H 8650 2700 50  0001 C CNN
+F 3 "https://eu.mouser.com/datasheet/2/530/cm7v-t1a-1085727.pdf" H 8650 2700 50  0001 C CNN
+	1    8650 2700
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:C_Small C19
+U 1 1 5FC7C068
+P 8800 2900
+F 0 "C19" H 8892 2946 50  0000 L CNN
+F 1 "10p" H 8892 2855 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 8800 2900 50  0001 C CNN
+F 3 "~" H 8800 2900 50  0001 C CNN
+	1    8800 2900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C18
+U 1 1 5FC7FDCA
+P 8500 2900
+F 0 "C18" H 8592 2946 50  0000 L CNN
+F 1 "10p" H 8592 2855 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 8500 2900 50  0001 C CNN
+F 3 "~" H 8500 2900 50  0001 C CNN
+	1    8500 2900
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	8350 2600 8500 2600
+Wire Wire Line
+	8500 2600 8500 2700
+Wire Wire Line
+	8550 2700 8500 2700
+Connection ~ 8500 2700
+Wire Wire Line
+	8500 2700 8500 2800
+Wire Wire Line
+	8800 2500 8800 2700
+Wire Wire Line
+	8800 2700 8750 2700
+Wire Wire Line
+	8350 2500 8800 2500
+Wire Wire Line
+	8800 2700 8800 2800
+Connection ~ 8800 2700
+Wire Wire Line
+	8800 3000 8800 3250
+Wire Wire Line
+	8800 3250 8650 3250
+Wire Wire Line
+	8500 3250 8500 3000
+$Comp
+L power:GND #PWR037
+U 1 1 5FCD8763
+P 8650 3300
+F 0 "#PWR037" H 8650 3050 50  0001 C CNN
+F 1 "GND" H 8655 3127 50  0000 C CNN
+F 2 "" H 8650 3300 50  0001 C CNN
+F 3 "" H 8650 3300 50  0001 C CNN
+	1    8650 3300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8650 3300 8650 3250
+Connection ~ 8650 3250
+Wire Wire Line
+	8650 3250 8500 3250
 $EndSCHEMATC

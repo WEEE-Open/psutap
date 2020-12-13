@@ -37,7 +37,7 @@ F 4 "CTX33-3-R" H 3950 1450 50  0001 C CNN "Notes"
 	1    0    0    -1  
 $EndComp
 $Comp
-L PSUtap_digital-rescue:LT1512-Battery_Management U1
+L Battery_Management:LT1512 U1
 U 1 1 5F3DB73C
 P 2850 2200
 F 0 "U1" H 2900 2665 50  0000 C CNN
@@ -143,8 +143,8 @@ U 1 1 5F3FD7A4
 P 2000 1400
 F 0 "C1" H 2088 1446 50  0000 L CNN
 F 1 "22u" H 2088 1355 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 2000 1400 50  0001 C CNN
-F 3 "~" H 2000 1400 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2000 1400 50  0001 C CNN
+F 3 "GRM219R61C226ME15L" H 2000 1400 50  0001 C CNN
 	1    2000 1400
 	1    0    0    -1  
 $EndComp
@@ -384,8 +384,8 @@ U 1 1 5F418D94
 P 5450 2350
 F 0 "C5" H 5538 2396 50  0000 L CNN
 F 1 "22u" H 5538 2305 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 5450 2350 50  0001 C CNN
-F 3 "~" H 5450 2350 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5450 2350 50  0001 C CNN
+F 3 "GRM219R61C226ME15L" H 5450 2350 50  0001 C CNN
 	1    5450 2350
 	1    0    0    -1  
 $EndComp
@@ -558,7 +558,7 @@ F 3 "" H 6950 2750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L PSUtap_digital-rescue:Si6926ADQ-Battery_Management U3
+L Battery_Management:Si6926ADQ U3
 U 1 1 5F5A4436
 P 8200 2200
 F 0 "U3" H 8200 2615 50  0000 C CNN
@@ -1690,17 +1690,6 @@ SS2
 Text Label 5550 3650 0    50   ~ 0
 !RDY
 $Comp
-L MCU_Microchip_ATmega:ATmega328P-AU U5
-U 1 1 5F73246F
-P 4850 4850
-F 0 "U5" H 4400 3400 50  0000 C CNN
-F 1 "ATmega328P-AU" H 4450 3300 50  0000 C CNN
-F 2 "Package_QFP:TQFP-32_7x7mm_P0.8mm" H 4850 4850 50  0001 C CIN
-F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/ATmega328_P%20AVR%20MCU%20with%20picoPower%20Technology%20Data%20Sheet%2040001984A.pdf" H 4850 4850 50  0001 C CNN
-	1    4850 4850
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:GND #PWR030
 U 1 1 5F8FBB37
 P 4850 6400
@@ -1714,11 +1703,7 @@ $EndComp
 Wire Wire Line
 	4850 6400 4850 6350
 Wire Wire Line
-	4850 3350 4850 3150
-Wire Wire Line
 	4850 3150 4950 3150
-Wire Wire Line
-	4950 3350 4950 3150
 Connection ~ 4950 3150
 Wire Wire Line
 	4950 3150 5050 3150
@@ -1758,6 +1743,7 @@ F 0 "C12" H 5138 3296 50  0000 L CNN
 F 1 "4.7u" H 5138 3205 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 5050 3250 50  0001 C CNN
 F 3 "~" H 5050 3250 50  0001 C CNN
+F 4 "CM03X5R475M06AH055" H 5050 3250 50  0001 C CNN "Notes"
 	1    5050 3250
 	1    0    0    -1  
 $EndComp
@@ -1765,35 +1751,14 @@ Connection ~ 5050 3150
 $Comp
 L Device:C_Small C13
 U 1 1 5F978F34
-P 5350 3250
-F 0 "C13" H 5442 3296 50  0000 L CNN
-F 1 "100n" H 5442 3205 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 5350 3250 50  0001 C CNN
-F 3 "~" H 5350 3250 50  0001 C CNN
-	1    5350 3250
+P 1800 3250
+F 0 "C13" H 1892 3296 50  0000 L CNN
+F 1 "100n" H 1892 3205 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 1800 3250 50  0001 C CNN
+F 3 "~" H 1800 3250 50  0001 C CNN
+	1    1800 3250
 	1    0    0    -1  
 $EndComp
-$Comp
-L power:GND #PWR016
-U 1 1 5F9792A7
-P 5550 3350
-F 0 "#PWR016" H 5550 3100 50  0001 C CNN
-F 1 "GND" H 5555 3177 50  0000 C CNN
-F 2 "" H 5550 3350 50  0001 C CNN
-F 3 "" H 5550 3350 50  0001 C CNN
-	1    5550 3350
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5550 3150 5350 3150
-Wire Wire Line
-	5050 3150 5350 3150
-Connection ~ 5350 3150
-Wire Wire Line
-	5050 3350 5350 3350
-Wire Wire Line
-	5350 3350 5550 3350
-Connection ~ 5350 3350
 Wire Wire Line
 	5450 5350 5600 5350
 Wire Wire Line
@@ -2090,4 +2055,37 @@ Wire Wire Line
 	5450 4350 5950 4350
 Text Label 2350 5200 0    50   ~ 0
 5Vsup
+Wire Wire Line
+	5050 3150 5550 3150
+Wire Wire Line
+	4950 3350 4950 3150
+Wire Wire Line
+	4850 3350 4850 3150
+$Comp
+L power:GND #PWR016
+U 1 1 5F9792A7
+P 5450 3350
+F 0 "#PWR016" H 5450 3100 50  0001 C CNN
+F 1 "GND" H 5455 3177 50  0000 C CNN
+F 2 "" H 5450 3350 50  0001 C CNN
+F 3 "" H 5450 3350 50  0001 C CNN
+	1    5450 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L MCU_Microchip_ATmega:ATmega328P-AU U5
+U 1 1 5F73246F
+P 4850 4850
+F 0 "U5" H 4400 3400 50  0000 C CNN
+F 1 "ATmega328P-AU" H 4450 3300 50  0000 C CNN
+F 2 "Package_QFP:TQFP-32_7x7mm_P0.8mm" H 4850 4850 50  0001 C CIN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/ATmega328_P%20AVR%20MCU%20with%20picoPower%20Technology%20Data%20Sheet%2040001984A.pdf" H 4850 4850 50  0001 C CNN
+	1    4850 4850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5450 3350 5050 3350
+Wire Wire Line
+	1800 3350 2150 3350
+Connection ~ 2150 3350
 $EndSCHEMATC
