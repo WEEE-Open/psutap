@@ -40,7 +40,7 @@ Adafruit_ILI9341 disp = Adafruit_ILI9341(PIN_SS_DISP, PIN_DISP_DC, PIN_MOSI, PIN
 Sd2Card card;
 SdVolume volume;
 SdFile root;
-#define VOLUMESIZE;
+uint32_t volume_size;
 bool uSD_present = 1;
 
 //* display diagnostics
@@ -122,13 +122,13 @@ void setup() {
             disp.println("\nCould not find FAT16/FAT32 volume.\nMake sure you've formatted the card");
         } else {
             //* first FAT volume info
-            volumesize = volume.blocksPerCluster(); // collection of blocks
-            volumesize *= volume.clusterCount();
-            volumesize /= 2; // block = 512B <==> 2 blocks = 1KB
+            volume_size = volume.blocksPerCluster(); // collection of blocks
+            volume_size *= volume.clusterCount();
+            volume_size /= 2; // block = 512B <==> 2 blocks = 1KB
             disp.print("\nVolume size:    ");
-            disp.print(volumesize);
+            disp.print(volume_size);
             disp.print("KB    (");
-            disp.print((float)volumesize/1024.0);
+            disp.print((float)volume_size/1024.0);
             disp.print("GB)");
             disp.print("\nFiles found on the card (name, date and size in bytes):");
             root.openRoot(volume);
