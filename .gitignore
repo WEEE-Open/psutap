@@ -9,3 +9,5 @@ debug.log
 
 # ignore the small utility bash script
 *.sh
+PSUtap_firmware/.vscode/c_cpp_properties.json
+PSUtap_firmware/.vscode/arduino.json
