@@ -4,63 +4,63 @@
 #include <SD.h>
 
 //* buttons
-#define pinU 2 //PD2=D2
-#define pinD 3 //PD3=D3
-#define pinL 4 //PD4=D4
-#define pinR 5 //PD5=D5
-#define pinA 7 //PD7=D7
-#define pinB 6 //PD6=D6
+#define PIN_U 2 //PD2 = D2
+#define PIN_D 3 //PD3 = D3
+#define PIN_L 4 //PD4 = D4
+#define PIN_R 5 //PD5 = D5
+#define PIN_A 7 //PD7 = D7
+#define PIN_B 6 //PD6 = D6
 //* buttons states
-bool stateU=0;
-bool stateD=0;
-bool stateL=0;
-bool stateR=0;
-bool stateA=0;
-bool stateB=0;
-bool stateButtons[6];////={stateU, stateD, stateL, stateR, stateA, stateB};
+bool state_U = 0;
+bool state_D = 0;
+bool state_L = 0;
+bool state_R = 0;
+bool state_A = 0;
+bool state_B = 0;
+bool state_buttons[6]; // = {state_U, state_D, state_L, state_R, state_A, state_B};
 
 //* SPI
-#define pinMOSI 11 //PB3=D11
-#define pinMISO 12 //PB4=D12
-#define pinSCLK 13 //PB5=D13
-#define pinSSADC 9 //PB1=D9
-#define pinSSDisp A0 //PC0=A0
-#define pinSSuSD 10 //PB2=D10
-#define pinDispDC A1 //PC1=A1
-//#define pinDispRST 0 //no display reset pin assigned
+#define PIN_MOSI 11 //PB3 = D11
+#define PIN_MISO 12 //PB4 = D12
+#define PIN_SCLK 13 //PB5 = D13
+#define PIN_SS_ADC 9 //PB1 = D9
+#define PIN_SS_DISP A0 //PC0 = A0
+#define PIN_SS_USD 10 //PB2 = D10
+#define PIN_DISP_DC A1 //PC1 = A1
+//#define PIN_DISP_RST 0 //no display reset pin assigned
 //* SPI slave select states
-bool stateSSADC=1;
-bool stateSSDisp=1;
-bool stateSSSD=1;
+bool state_SS_ADC = 1;
+bool state_SS_disp = 1;
+bool state_SS_uSD = 1;
 
 //* display declaration
-Adafruit_ILI9341 disp=Adafruit_ILI9341(pinSSDisp, pinDispDC, pinMOSI, pinSCLK); //_RST and _MISO pins not specified (fallback = -1)
+Adafruit_ILI9341 disp = Adafruit_ILI9341(PIN_SS_DISP, PIN_DISP_DC, PIN_MOSI, PIN_SCLK); //_RST and _MISO pins not specified (fallback = -1)
 
 //* uSD card declaration
 Sd2Card card;
 SdVolume volume;
 SdFile root;
-#define volumesize;
-bool uSDpresent=1;
+#define VOLUMESIZE;
+bool uSD_present = 1;
 
 //* display diagnostics
 //* see https://www.newhavendisplay.com/app_notes/ILI9341.pdf
-#define dispPwrMode disp.readcommand8(ILI9341_RDMODE) //idle, sleep, normal, on/off
-#define dispMADCTLMode disp.readcommand8(ILI9341_RDMADCTL) //display print direction, refresh direction
-#define dispPixelFormat disp.readcommand8(ILI9341_RDPIXFMT) //bpp
-#define dispImgFormat disp.readcommand8(ILI9341_RDIMGFMT) //gamma
-#define dispSelfDiag disp.readcommand8(ILI9341_RDSELFDIAG)
+#define DISP_PWR_MODE disp.readcommand8(ILI9341_RDMODE) //idle, sleep, normal, on/off
+#define DISP_MADCTL_MODE disp.readcommand8(ILI9341_RDMADCTL) //display print direction, refresh direction
+#define DISP_PXL_FORMAT disp.readcommand8(ILI9341_RDPIXFMT) //bpp
+#define DISP_IMG_FORMAT disp.readcommand8(ILI9341_RDIMGFMT) //gamma
+#define DISP_SELF_DIAG disp.readcommand8(ILI9341_RDSELFDIAG)
 
-unsigned long dispDiag(){
-    Serial.print("Display Power Mode: 0x"); Serial.println(dispPwrMode, HEX);
-    Serial.print("MADCTL Mode: 0x"); Serial.println(dispMADCTLMode, HEX);
-    Serial.print("Pixel Format: 0x"); Serial.println(dispPixelFormat, HEX);
-    Serial.print("Image Format: 0x"); Serial.println(dispImgFormat, HEX);
-    Serial.print("Self Diagnostic: 0x"); Serial.println(dispSelfDiag, HEX);
+unsigned long dispDiag() {
+    Serial.print("Display Power Mode: 0x"); Serial.println(DISP_PWR_MODE, HEX);
+    Serial.print("MADCTL Mode: 0x"); Serial.println(DISP_MADCTL_MODE, HEX);
+    Serial.print("Pixel Format: 0x"); Serial.println(DISP_PXL_FORMAT, HEX);
+    Serial.print("Image Format: 0x"); Serial.println(DISP_IMG_FORMAT, HEX);
+    Serial.print("Self Diagnostic: 0x"); Serial.println(DISP_SELF_DIAG, HEX);
 }
 
 //* display test text
-unsigned long dispTestText(){
+unsigned long dispTestText() {
     disp.fillScreen(ILI9341_BLACK);
     unsigned long start = micros();
     disp.setCursor(0, 0);
@@ -81,14 +81,14 @@ unsigned long dispTestText(){
     return micros() - start;
 }
 
-void setup(){
+void setup() {
     //* buttons
-    pinMode(pinU, INPUT);
-    pinMode(pinD, INPUT);
-    pinMode(pinL, INPUT);
-    pinMode(pinR, INPUT);
-    pinMode(pinA, INPUT);
-    pinMode(pinB, INPUT);
+    pinMode(PIN_U, INPUT);
+    pinMode(PIN_D, INPUT);
+    pinMode(PIN_L, INPUT);
+    pinMode(PIN_R, INPUT);
+    pinMode(PIN_A, INPUT);
+    pinMode(PIN_B, INPUT);
 
     //* SPI
     Serial.begin(9600);
@@ -103,30 +103,28 @@ void setup(){
 
     //* uSD card
     disp.print("\nInitializing uSD card...");
-    if(!SD.begin(pinSSuSD)){
+    if(!SD.begin(PIN_SS_USD)) {
         Serial.println("\nCard initialization failed, or card not present");
-        uSDpresent=0;
-    }
-    else{
+        uSD_present = 0;
+    } else {
         Serial.println("\nCard initialized");
 
         //* type
         disp.print("\nCard type:    ");
-        switch (card.type()){
+        switch (card.type()) {
         case SD_CARD_TYPE_SD1: disp.print("SD1"); break;
         case SD_CARD_TYPE_SD2: disp.print("SD2"); break;
         case SD_CARD_TYPE_SDHC: disp.print("SDHC"); break;
         default: disp.print("Unknown"); break;
         }
         //* find FAT volume
-        if(!volume.init(card)){
+        if(!volume.init(card)) {
             disp.println("\nCould not find FAT16/FAT32 volume.\nMake sure you've formatted the card");
-        }
-        else{
+        } else {
             //* first FAT volume info
-            volumesize=volume.blocksPerCluster(); // collection of blocks
-            volumesize*=volume.clusterCount();
-            volumesize/=2; // block = 512B <==> 2 blocks = 1KB
+            volumesize = volume.blocksPerCluster(); // collection of blocks
+            volumesize *= volume.clusterCount();
+            volumesize /= 2; // block = 512B <==> 2 blocks = 1KB
             disp.print("\nVolume size:    ");
             disp.print(volumesize);
             disp.print("KB    (");
@@ -143,29 +141,29 @@ void setup(){
 
 }
 
-void loop(){
+void loop() {
     //* read buttons
-    stateU=digitalRead(pinU);
-    stateD=digitalRead(pinD);
-    stateL=digitalRead(pinL);
-    stateR=digitalRead(pinR);
-    stateA=digitalRead(pinA);
-    stateB=digitalRead(pinB);
-    stateButtons[0]=stateU;
-    stateButtons[1]=stateD;
-    stateButtons[2]=stateL;
-    stateButtons[3]=stateR;
-    stateButtons[4]=stateA;
-    stateButtons[5]=stateB;
+    state_U = digitalRead(PIN_U);
+    state_D = digitalRead(PIN_D);
+    state_L = digitalRead(PIN_L);
+    state_R = digitalRead(PIN_R);
+    state_A = digitalRead(PIN_A);
+    state_B = digitalRead(PIN_B);
+    state_buttons[0] = state_U;
+    state_buttons[1] = state_D;
+    state_buttons[2] = state_L;
+    state_buttons[3] = state_R;
+    state_buttons[4] = state_A;
+    state_buttons[5] = state_B;
 
 
 
     //* buttons press check
-    if(stateU==1){disp.println("U"); delay(100);};
-    if(stateD==1){disp.println("D"); delay(100);};
-    if(stateL==1){disp.println("L"); delay(100);};
-    if(stateR==1){disp.println("R"); delay(100);};
-    if(stateA==1){dispTestText(); delay(100);};
-    if(stateB==1){dispDiag(); delay(100);};
+    if(state_U == 1) {disp.println("U"); delay(100);};
+    if(state_D == 1) {disp.println("D"); delay(100);};
+    if(state_L == 1) {disp.println("L"); delay(100);};
+    if(state_R == 1) {disp.println("R"); delay(100);};
+    if(state_A == 1) {dispTestText(); delay(100);};
+    if(state_B == 1) {dispDiag(); delay(100);};
 
 }
