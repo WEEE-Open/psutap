@@ -130,7 +130,7 @@ F 3 "~" H 6000 3650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L lt6105-amplifier:LT6105-Amplifier_Current U1
+L PSUtap_eval_LT6105-rescue:LT6105-Amplifier_Current-lt6105-amplifier U1
 U 1 1 606E1D6E
 P 5500 3200
 F 0 "U1" H 5550 3450 50  0000 L CNN

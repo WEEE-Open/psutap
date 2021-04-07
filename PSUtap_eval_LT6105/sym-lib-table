@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name PSUtap_eval_LT6105-rescue)(type Legacy)(uri ${KIPRJMOD}/PSUtap_eval_LT6105-rescue.lib)(options "")(descr ""))
+)

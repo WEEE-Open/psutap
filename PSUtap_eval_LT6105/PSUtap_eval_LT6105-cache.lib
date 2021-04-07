@@ -78,11 +78,11 @@ X ~ 2 0 -100 30 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# lt6105-amplifier_LT6105-Amplifier_Current
+# PSUtap_eval_LT6105-rescue_LT6105-Amplifier_Current-lt6105-amplifier
 #
-DEF lt6105-amplifier_LT6105-Amplifier_Current U 0 5 Y Y 1 F N
+DEF PSUtap_eval_LT6105-rescue_LT6105-Amplifier_Current-lt6105-amplifier U 0 5 Y Y 1 F N
 F0 "U" 50 200 50 H V C CNN
-F1 "lt6105-amplifier_LT6105-Amplifier_Current" 0 -200 50 H V L CNN
+F1 "PSUtap_eval_LT6105-rescue_LT6105-Amplifier_Current-lt6105-amplifier" 0 -200 50 H V L CNN
 F2 "Package_SO:MSOP-8_3x3mm_P0.65mm" 0 0 50 H I C CNN
 F3 "" 50 200 50 H I C CNN
 $FPLIST
