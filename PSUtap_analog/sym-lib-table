@@ -1,3 +1,4 @@
 (sym_lib_table
   (lib (name PSUtap-rescue)(type Legacy)(uri ${KIPRJMOD}/PSUtap-rescue.lib)(options "")(descr ""))
+  (lib (name PSUtap_analog-rescue)(type Legacy)(uri ${KIPRJMOD}/PSUtap_analog-rescue.lib)(options "")(descr ""))
 )
