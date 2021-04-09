@@ -1001,7 +1001,7 @@ F 3 "~" H 2500 1500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Analog_ADC:AD7708 U1
+L PSUtap_analog-rescue:AD7708-Analog_ADC U1
 U 1 1 5EB8BD75
 P 7750 1900
 F 0 "U1" H 7750 3065 50  0000 C CNN
@@ -1218,7 +1218,7 @@ Wire Wire Line
 	3400 5050 3800 5050
 Connection ~ 3800 5050
 $Comp
-L Amplifier_Current:LT6105 U2
+L PSUtap_analog-rescue:LT6105-Amplifier_Current U2
 U 1 1 5EDFB0C9
 P 3100 3800
 F 0 "U2" H 3444 3846 50  0000 L CNN
@@ -1229,7 +1229,7 @@ F 3 "https://www.analog.com/media/en/technical-documentation/data-sheets/6105fa.
 	1    0    0    -1  
 $EndComp
 $Comp
-L Amplifier_Current:LT6105 U3
+L PSUtap_analog-rescue:LT6105-Amplifier_Current U3
 U 1 1 5EDFC037
 P 5550 3800
 F 0 "U3" H 5894 3846 50  0000 L CNN
@@ -1240,7 +1240,7 @@ F 3 "https://www.analog.com/media/en/technical-documentation/data-sheets/6105fa.
 	1    0    0    -1  
 $EndComp
 $Comp
-L Amplifier_Current:LT6105 U6
+L PSUtap_analog-rescue:LT6105-Amplifier_Current U6
 U 1 1 5EDFC763
 P 5550 5050
 F 0 "U6" H 5894 5096 50  0000 L CNN
@@ -1251,7 +1251,7 @@ F 3 "https://www.analog.com/media/en/technical-documentation/data-sheets/6105fa.
 	1    0    0    -1  
 $EndComp
 $Comp
-L Amplifier_Current:LT6105 U4
+L PSUtap_analog-rescue:LT6105-Amplifier_Current U4
 U 1 1 5EDFCB68
 P 8000 3800
 F 0 "U4" H 8344 3846 50  0000 L CNN
@@ -1508,7 +1508,7 @@ Wire Wire Line
 Wire Wire Line
 	5450 4750 5450 4700
 $Comp
-L Amplifier_Current:LT6105 U5
+L PSUtap_analog-rescue:LT6105-Amplifier_Current U5
 U 1 1 5EDFBA9E
 P 3100 5050
 F 0 "U5" H 3444 5096 50  0000 L CNN
