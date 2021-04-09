@@ -4,30 +4,25 @@
 #include <SD.h>
 
 //* buttons
-#define PIN_U 2 //PD2 = D2
-#define PIN_D 3 //PD3 = D3
-#define PIN_L 4 //PD4 = D4
-#define PIN_R 5 //PD5 = D5
-#define PIN_A 7 //PD7 = D7
-#define PIN_B 6 //PD6 = D6
-//* buttons states
-bool state_U = 0;
-bool state_D = 0;
-bool state_L = 0;
-bool state_R = 0;
-bool state_A = 0;
-bool state_B = 0;
-bool state_buttons[6]; // = {state_U, state_D, state_L, state_R, state_A, state_B};
+#define PIN_U 2 // PD2 = D2
+#define PIN_D 3 // PD3 = D3
+#define PIN_L 4 // PD4 = D4
+#define PIN_R 5 // PD5 = D5
+#define PIN_A 7 // PD7 = D7
+#define PIN_B 6 // PD6 = D6
+
+enum button { U, D, L, R, A, B };
+bool button_state[6];
 
 //* SPI
-#define PIN_MOSI 11 //PB3 = D11
-#define PIN_MISO 12 //PB4 = D12
-#define PIN_SCLK 13 //PB5 = D13
-#define PIN_SS_ADC 9 //PB1 = D9
-#define PIN_SS_DISP A0 //PC0 = A0
-#define PIN_SS_USD 10 //PB2 = D10
-#define PIN_DISP_DC A1 //PC1 = A1
-//#define PIN_DISP_RST 0 //no display reset pin assigned
+#define PIN_MOSI 11 // PB3 = D11
+#define PIN_MISO 12 // PB4 = D12
+#define PIN_SCLK 13 // PB5 = D13
+#define PIN_SS_ADC 9 // PB1 = D9
+#define PIN_SS_DISP A0 // PC0 = A0
+#define PIN_SS_USD 10 // PB2 = D10
+#define PIN_DISP_DC A1 // PC1 = A1
+//#define PIN_DISP_RST 0 // no display reset pin assigned
 //* SPI slave select states
 bool state_SS_ADC = 1;
 bool state_SS_disp = 1;
@@ -143,27 +138,21 @@ void setup() {
 
 void loop() {
     //* read buttons
-    state_U = digitalRead(PIN_U);
-    state_D = digitalRead(PIN_D);
-    state_L = digitalRead(PIN_L);
-    state_R = digitalRead(PIN_R);
-    state_A = digitalRead(PIN_A);
-    state_B = digitalRead(PIN_B);
-    state_buttons[0] = state_U;
-    state_buttons[1] = state_D;
-    state_buttons[2] = state_L;
-    state_buttons[3] = state_R;
-    state_buttons[4] = state_A;
-    state_buttons[5] = state_B;
+    button_state[U] = digitalRead(PIN_U);
+    button_state[D] = digitalRead(PIN_D);
+    button_state[L] = digitalRead(PIN_L);
+    button_state[R] = digitalRead(PIN_R);
+    button_state[A] = digitalRead(PIN_A);
+    button_state[B] = digitalRead(PIN_B);
 
 
 
     //* buttons press check
-    if(state_U == 1) {disp.println("U"); delay(100);};
-    if(state_D == 1) {disp.println("D"); delay(100);};
-    if(state_L == 1) {disp.println("L"); delay(100);};
-    if(state_R == 1) {disp.println("R"); delay(100);};
-    if(state_A == 1) {dispTestText(); delay(100);};
-    if(state_B == 1) {dispDiag(); delay(100);};
+    if(button_state[U] == 1) { disp.println("U"); delay(100); };
+    if(button_state[D] == 1) { disp.println("D"); delay(100); };
+    if(button_state[L] == 1) { disp.println("L"); delay(100); };
+    if(button_state[R] == 1) { disp.println("R"); delay(100); };
+    if(button_state[A] == 1) { dispTestText(); delay(100); };
+    if(button_state[B] == 1) { dispDiag(); delay(100); };
 
 }
