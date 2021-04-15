@@ -1,0 +1,7 @@
+(sym_lib_table
+  (lib (name lt6105-amplifier_current)(type Legacy)(uri /home/vlad/Downloads/psutap-main/KiCad_custom_libraries/lt6105-amplifier_current.lib)(options "")(descr ""))
+  (lib (name PSUtap_analog-cache)(type Legacy)(uri /home/vlad/Downloads/psutap-main/PSUtap_analog/PSUtap_analog-cache.lib)(options "")(descr ""))
+  (lib (name PSUtap_analog-rescue)(type Legacy)(uri /home/vlad/Downloads/psutap-main/PSUtap_analog/PSUtap_analog-rescue.lib)(options "")(descr ""))
+  (lib (name 2021-04-11_13-43-56)(type Legacy)(uri "/home/vlad/Documents/WEEE Open/ul_AD780ANZ/KiCAD/2021-04-11_13-43-56/2021-04-11_13-43-56.lib")(options "")(descr ""))
+  (lib (name PSUtap_eval_AD7708-rescue)(type Legacy)(uri ${KIPRJMOD}/PSUtap_eval_AD7708-rescue.lib)(options "")(descr ""))
+)
