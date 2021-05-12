@@ -386,7 +386,7 @@ Wire Wire Line
 Wire Wire Line
 	6000 4450 6000 4400
 $Comp
-L PSUtap_analog-cache:Device_Crystal_Small Y1
+L PSUtap_eval_AD7708-rescue:Device_Crystal_Small-PSUtap_analog-cache Y1
 U 1 1 607338CA
 P 6250 3900
 F 0 "Y1" V 6204 3988 50  0000 L CNN
@@ -663,7 +663,7 @@ COM
 Wire Wire Line
 	1450 1900 1450 1750
 $Comp
-L PSUtap_analog-rescue:AD7708-Analog_ADC-PSUtap_analog-rescue U1
+L PSUtap_eval_AD7708-rescue:AD7708-Analog_ADC-PSUtap_analog-rescue-PSUtap_analog-rescue U1
 U 1 1 6073881A
 P 4900 2550
 F 0 "U1" H 4900 3715 50  0000 C CNN
@@ -678,7 +678,7 @@ L PSUtap_eval_AD7708-rescue:AD780ANZ-2021-04-11_13-43-56 U2
 U 1 1 6073DCB2
 P 7700 4850
 F 0 "U2" H 10000 5237 60  0000 C CNN
-F 1 "AD780ANZ" H 10000 5131 60  0000 C CNN
+F 1 "AD780ARZ" H 10000 5131 60  0000 C CNN
 F 2 "Package_SO:SSOP-8_3.9x5.05mm_P1.27mm" H 10000 5090 60  0001 C CNN
 F 3 "" H 7700 4850 60  0000 C CNN
 	1    7700 4850

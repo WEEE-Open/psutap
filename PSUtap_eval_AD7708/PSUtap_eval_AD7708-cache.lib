@@ -186,30 +186,11 @@ P 277 0 1 0 132 -171 130 -170 125 -167 118 -162 109 -156 100 -150 93 -146 88 -14
 ENDDRAW
 ENDDEF
 #
-# PSUtap_analog-cache_Device_Crystal_Small
+# PSUtap_eval_AD7708-rescue_AD7708-Analog_ADC-PSUtap_analog-rescue-PSUtap_analog-rescue
 #
-DEF PSUtap_analog-cache_Device_Crystal_Small Y 0 40 N N 1 F N
-F0 "Y" 0 100 50 H V C CNN
-F1 "PSUtap_analog-cache_Device_Crystal_Small" 0 -100 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-$FPLIST
- Crystal*
-$ENDFPLIST
-DRAW
-S -30 -60 30 60 0 1 0 N
-P 2 0 1 15 -50 -30 -50 30 N
-P 2 0 1 15 50 -30 50 30 N
-X 1 1 -100 0 50 R 50 50 1 1 P
-X 2 2 100 0 50 L 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
-# PSUtap_analog-rescue_AD7708-Analog_ADC-PSUtap_analog-rescue
-#
-DEF PSUtap_analog-rescue_AD7708-Analog_ADC-PSUtap_analog-rescue U 0 40 Y Y 1 F N
+DEF PSUtap_eval_AD7708-rescue_AD7708-Analog_ADC-PSUtap_analog-rescue-PSUtap_analog-rescue U 0 40 Y Y 1 F N
 F0 "U" 0 1050 50 H V C CNN
-F1 "PSUtap_analog-rescue_AD7708-Analog_ADC-PSUtap_analog-rescue" 0 -1050 50 H V C CNN
+F1 "PSUtap_eval_AD7708-rescue_AD7708-Analog_ADC-PSUtap_analog-rescue-PSUtap_analog-rescue" 0 -1050 50 H V C CNN
 F2 "Package_SO:SOIC-28W_7.5x18.7mm_P1.27mm" 50 300 50 H I C CNN
 F3 "" 0 1050 50 H I C CNN
 $FPLIST
@@ -268,6 +249,25 @@ X TRIM 5 2550 -300 300 L 59 59 1 1 I
 X VOUT 6 2550 -200 300 L 59 59 1 1 O
 X NC 7 2550 -100 300 L 59 59 1 1 N
 X 2-5V/3-0V_O/PSELECT_NC_OR_GND 8 2550 0 300 L 59 59 1 1 I
+ENDDRAW
+ENDDEF
+#
+# PSUtap_eval_AD7708-rescue_Device_Crystal_Small-PSUtap_analog-cache
+#
+DEF PSUtap_eval_AD7708-rescue_Device_Crystal_Small-PSUtap_analog-cache Y 0 40 N N 1 F N
+F0 "Y" 0 100 50 H V C CNN
+F1 "PSUtap_eval_AD7708-rescue_Device_Crystal_Small-PSUtap_analog-cache" 0 -100 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ Crystal*
+$ENDFPLIST
+DRAW
+S -30 -60 30 60 0 1 0 N
+P 2 0 1 15 -50 -30 -50 30 N
+P 2 0 1 15 50 -30 50 30 N
+X 1 1 -100 0 50 R 50 50 1 1 P
+X 2 2 100 0 50 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
