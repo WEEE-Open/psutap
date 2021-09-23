@@ -47,112 +47,112 @@ bool uSD_present = 1;
 #define DISP_SELF_DIAG disp.readcommand8(ILI9341_RDSELFDIAG)
 
 unsigned long dispDiag() {
-    Serial.print("Display Power Mode: 0x"); Serial.println(DISP_PWR_MODE, HEX);
-    Serial.print("MADCTL Mode: 0x"); Serial.println(DISP_MADCTL_MODE, HEX);
-    Serial.print("Pixel Format: 0x"); Serial.println(DISP_PXL_FORMAT, HEX);
-    Serial.print("Image Format: 0x"); Serial.println(DISP_IMG_FORMAT, HEX);
-    Serial.print("Self Diagnostic: 0x"); Serial.println(DISP_SELF_DIAG, HEX);
+	Serial.print("Display Power Mode: 0x"); Serial.println(DISP_PWR_MODE, HEX);
+	Serial.print("MADCTL Mode: 0x"); Serial.println(DISP_MADCTL_MODE, HEX);
+	Serial.print("Pixel Format: 0x"); Serial.println(DISP_PXL_FORMAT, HEX);
+	Serial.print("Image Format: 0x"); Serial.println(DISP_IMG_FORMAT, HEX);
+	Serial.print("Self Diagnostic: 0x"); Serial.println(DISP_SELF_DIAG, HEX);
 }
 
 //* display test text
 unsigned long dispTestText() {
-    disp.fillScreen(ILI9341_BLACK);
-    unsigned long start = micros();
-    disp.setCursor(0, 0);
-    disp.setTextColor(ILI9341_WHITE);  disp.setTextSize(1);
-    disp.println("Hello World!");
-    disp.setTextColor(ILI9341_YELLOW); disp.setTextSize(2);
-    disp.println(1234.56);
-    disp.setTextColor(ILI9341_RED);    disp.setTextSize(3);
-    disp.println(0xDEADBEEF, HEX);
-    disp.println();
-    disp.setTextColor(ILI9341_GREEN);
-    disp.setTextSize(5);
-    disp.println("Groop");
-    disp.setTextSize(2);
-    disp.println("I implore thee,");
-    disp.setTextSize(1);
-    disp.println("my foonting turlingdromes.");
-    return micros() - start;
+	disp.fillScreen(ILI9341_BLACK);
+	unsigned long start = micros();
+	disp.setCursor(0, 0);
+	disp.setTextColor(ILI9341_WHITE);  disp.setTextSize(1);
+	disp.println("Hello World!");
+	disp.setTextColor(ILI9341_YELLOW); disp.setTextSize(2);
+	disp.println(1234.56);
+	disp.setTextColor(ILI9341_RED);    disp.setTextSize(3);
+	disp.println(0xDEADBEEF, HEX);
+	disp.println();
+	disp.setTextColor(ILI9341_GREEN);
+	disp.setTextSize(5);
+	disp.println("Groop");
+	disp.setTextSize(2);
+	disp.println("I implore thee,");
+	disp.setTextSize(1);
+	disp.println("my foonting turlingdromes.");
+	return micros() - start;
 }
 
 void setup() {
-    //* buttons
-    pinMode(PIN_U, INPUT);
-    pinMode(PIN_D, INPUT);
-    pinMode(PIN_L, INPUT);
-    pinMode(PIN_R, INPUT);
-    pinMode(PIN_A, INPUT);
-    pinMode(PIN_B, INPUT);
+	//* buttons
+	pinMode(PIN_U, INPUT);
+	pinMode(PIN_D, INPUT);
+	pinMode(PIN_L, INPUT);
+	pinMode(PIN_R, INPUT);
+	pinMode(PIN_A, INPUT);
+	pinMode(PIN_B, INPUT);
 
-    //* SPI
-    Serial.begin(9600);
-    Serial.println("Hi PC, this is ATMega :)");
-    disp.begin();
+	//* SPI
+	Serial.begin(9600);
+	Serial.println("Hi PC, this is ATMega :)");
+	disp.begin();
 
-    //* display initial conditions
-    disp.fillScreen(ILI9341_BLACK);
-    disp.setCursor(0, 0);
-    disp.setTextColor(ILI9341_WHITE);  disp.setTextSize(1);
-    disp.println("Hi, this is PSUtap\n");
+	//* display initial conditions
+	disp.fillScreen(ILI9341_BLACK);
+	disp.setCursor(0, 0);
+	disp.setTextColor(ILI9341_WHITE);  disp.setTextSize(1);
+	disp.println("Hi, this is PSUtap\n");
 
-    //* uSD card
-    disp.print("\nInitializing uSD card...");
-    if(!SD.begin(PIN_SS_USD)) {
-        Serial.println("\nCard initialization failed, or card not present");
-        uSD_present = 0;
-    } else {
-        Serial.println("\nCard initialized");
+	//* uSD card
+	disp.print("\nInitializing uSD card...");
+	if(!SD.begin(PIN_SS_USD)) {
+	Serial.println("\nCard initialization failed, or card not present");
+	uSD_present = 0;
+	} else {
+	Serial.println("\nCard initialized");
 
-        //* type
-        disp.print("\nCard type:    ");
-        switch (card.type()) {
-        case SD_CARD_TYPE_SD1: disp.print("SD1"); break;
-        case SD_CARD_TYPE_SD2: disp.print("SD2"); break;
-        case SD_CARD_TYPE_SDHC: disp.print("SDHC"); break;
-        default: disp.print("Unknown"); break;
-        }
-        //* find FAT volume
-        if(!volume.init(card)) {
-            disp.println("\nCould not find FAT16/FAT32 volume.\nMake sure you've formatted the card");
-        } else {
-            //* first FAT volume info
-            volume_size = volume.blocksPerCluster(); // collection of blocks
-            volume_size *= volume.clusterCount();
-            volume_size /= 2; // block = 512B <==> 2 blocks = 1KB
-            disp.print("\nVolume size:    ");
-            disp.print(volume_size);
-            disp.print("KB    (");
-            disp.print((float)volume_size/1024.0);
-            disp.print("GB)");
-            disp.print("\nFiles found on the card (name, date and size in bytes):");
-            root.openRoot(volume);
-            root.ls(LS_R | LS_DATE | LS_SIZE);
-            root.close();
-        }
-    }
+	//* type
+	disp.print("\nCard type:	");
+	switch (card.type()) {
+	case SD_CARD_TYPE_SD1: disp.print("SD1"); break;
+	case SD_CARD_TYPE_SD2: disp.print("SD2"); break;
+	case SD_CARD_TYPE_SDHC: disp.print("SDHC"); break;
+	default: disp.print("Unknown"); break;
+	}
+	//* find FAT volume
+	if(!volume.init(card)) {
+		disp.println("\nCould not find FAT16/FAT32 volume.\nMake sure you've formatted the card");
+	} else {
+		//* first FAT volume info
+		volume_size = volume.blocksPerCluster(); // collection of blocks
+		volume_size *= volume.clusterCount();
+		volume_size /= 2; // block = 512B <==> 2 blocks = 1KB
+		disp.print("\nVolume size:	  ");
+		disp.print(volume_size);
+		disp.print("KB	  (");
+		disp.print((float)volume_size/1024.0);
+		disp.print("GB)");
+		disp.print("\nFiles found on the card (name, date and size in bytes):");
+		root.openRoot(volume);
+		root.ls(LS_R | LS_DATE | LS_SIZE);
+		root.close();
+	}
+	}
 
-    disp.print("\n");
+	disp.print("\n");
 
 }
 
 void loop() {
-    //* read buttons
-    button_state[U] = digitalRead(PIN_U);
-    button_state[D] = digitalRead(PIN_D);
-    button_state[L] = digitalRead(PIN_L);
-    button_state[R] = digitalRead(PIN_R);
-    button_state[A] = digitalRead(PIN_A);
-    button_state[B] = digitalRead(PIN_B);
+	//* read buttons
+	button_state[U] = digitalRead(PIN_U);
+	button_state[D] = digitalRead(PIN_D);
+	button_state[L] = digitalRead(PIN_L);
+	button_state[R] = digitalRead(PIN_R);
+	button_state[A] = digitalRead(PIN_A);
+	button_state[B] = digitalRead(PIN_B);
 
 
 
-    //* buttons press check
-    if(button_state[U] == 1) { disp.println("U"); delay(100); };
-    if(button_state[D] == 1) { disp.println("D"); delay(100); };
-    if(button_state[L] == 1) { disp.println("L"); delay(100); };
-    if(button_state[R] == 1) { disp.println("R"); delay(100); };
-    if(button_state[A] == 1) { dispTestText(); delay(100); };
-    if(button_state[B] == 1) { dispDiag(); delay(100); };
+	//* buttons press check
+	if(button_state[U] == 1) { disp.println("U"); delay(100); };
+	if(button_state[D] == 1) { disp.println("D"); delay(100); };
+	if(button_state[L] == 1) { disp.println("L"); delay(100); };
+	if(button_state[R] == 1) { disp.println("R"); delay(100); };
+	if(button_state[A] == 1) { dispTestText(); delay(100); };
+	if(button_state[B] == 1) { dispDiag(); delay(100); };
 
 }
